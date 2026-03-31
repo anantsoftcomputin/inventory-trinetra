@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard, Package, Layers, ShoppingCart,
-  FileText, Tag, Settings, LogOut, Eye
+  FileText, Tag, Settings, LogOut
 } from 'lucide-react';
 import { logOut } from '../../firebase/authService';
 import { auth } from '../../firebase/config';
@@ -45,11 +45,14 @@ export default function Sidebar({ isOpen, onClose }) {
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
         {/* Logo */}
-        <div className="flex items-center gap-2 px-6 py-5 border-b border-indigo-800">
-          <div className="w-9 h-9 bg-amber-600 rounded-lg flex items-center justify-center">
-            <Eye className="w-5 h-5 text-white" />
+        <div className="flex items-center gap-3 px-6 py-4 border-b border-indigo-800">
+          <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-1 flex-shrink-0 shadow-sm">
+            <img src="/logo.png" alt="Trinetra" className="w-full h-full object-contain" />
           </div>
-          <span className="text-xl font-bold tracking-widest text-amber-400">TRINETRA</span>
+          <div>
+            <span className="text-lg font-bold tracking-widest text-amber-400 block leading-tight">TRINETRA</span>
+            <span className="text-[10px] text-indigo-400 tracking-wide">Fashion Studio</span>
+          </div>
         </div>
 
         {/* Nav */}

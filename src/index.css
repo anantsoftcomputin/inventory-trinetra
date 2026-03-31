@@ -10,6 +10,12 @@
   }
 }
 
+/* iOS safe area for bottom nav */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  height: calc(4rem + env(safe-area-inset-bottom, 0px));
+}
+
 @media print {
   .no-print {
     display: none !important;

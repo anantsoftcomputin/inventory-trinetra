@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { X, Plus, Image, RefreshCw } from 'lucide-react';
+import { X, Plus, Image, Camera, RefreshCw } from 'lucide-react';
 import { addProduct, updateProduct, getCategories } from '../../firebase/inventoryService';
 import { encodePrice } from '../../utils/tagCodec';
 import { generateSKU } from '../../utils/skuGenerator';
@@ -35,6 +35,7 @@ export default function ProductForm({ isOpen, onClose, onSaved, product }) {
   const [showBreakdown, setShowBreakdown] = useState(false);
   const [generatingSKU, setGeneratingSKU] = useState(false);
   const fileRef = useRef();
+  const cameraRef = useRef();
 
   const isEdit = !!product;
 
@@ -369,6 +370,23 @@ export default function ProductForm({ isOpen, onClose, onSaved, product }) {
                 </button>
               </div>
             ))}
+            {/* Camera button */}
+            <button
+              type="button"
+              onClick={() => cameraRef.current.click()}
+              disabled={uploading}
+              className="w-20 h-20 border-2 border-dashed border-indigo-300 rounded-lg flex flex-col items-center justify-center text-indigo-400 hover:border-indigo-500 hover:text-indigo-600 transition-colors"
+            >
+              {uploading ? (
+                <span className="w-5 h-5 border-2 border-indigo-400 border-t-transparent rounded-full animate-spin" />
+              ) : (
+                <>
+                  <Camera className="w-5 h-5" />
+                  <span className="text-xs mt-1">Camera</span>
+                </>
+              )}
+            </button>
+            {/* Gallery / file picker button */}
             <button
               type="button"
               onClick={() => fileRef.current.click()}
@@ -380,11 +398,14 @@ export default function ProductForm({ isOpen, onClose, onSaved, product }) {
               ) : (
                 <>
                   <Image className="w-5 h-5" />
-                  <span className="text-xs mt-1">Add</span>
+                  <span className="text-xs mt-1">Gallery</span>
                 </>
               )}
             </button>
           </div>
+          {/* Camera capture — opens rear camera on mobile */}
+          <input ref={cameraRef} type="file" accept="image/*" capture="environment" className="hidden" onChange={handleImageUpload} />
+          {/* Gallery / file picker — multiple files */}
           <input ref={fileRef} type="file" multiple accept="image/*" className="hidden" onChange={handleImageUpload} />
         </div>
 

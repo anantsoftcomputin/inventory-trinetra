@@ -6,6 +6,7 @@ import {
 import { logOut } from '../../firebase/authService';
 import { auth } from '../../firebase/config';
 import toast from 'react-hot-toast';
+import Logo from '../common/Logo';
 
 const navItems = [
   { icon: LayoutDashboard, label: 'Dashboard', to: '/dashboard' },
@@ -47,7 +48,7 @@ export default function Sidebar({ isOpen, onClose }) {
         {/* Logo */}
         <div className="flex items-center gap-3 px-6 py-4 border-b border-indigo-800">
           <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-1 flex-shrink-0 shadow-sm">
-            <img src="/logo.png" alt="Trinetra" className="w-full h-full object-contain" />
+            <Logo className="w-10 h-10" imgClassName="w-full h-full object-contain" />
           </div>
           <div>
             <span className="text-lg font-bold tracking-widest text-amber-400 block leading-tight">TRINETRA</span>

@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { Package, Layers, ShoppingCart, FileText } from 'lucide-react';
+import Logo from '../common/Logo';
 
 const leftItems = [
   { icon: Package, label: 'Inventory', to: '/inventory' },
@@ -49,11 +50,7 @@ export default function BottomNav() {
                       : 'border-indigo-200 shadow-indigo-200/60'
                   } bg-white`}
                 >
-                  <img
-                    src="/logo.png"
-                    alt="Home"
-                    className="w-10 h-10 object-contain"
-                  />
+                  <Logo className="w-10 h-10" imgClassName="w-10 h-10 object-contain" />
                 </div>
                 <span
                   className={`text-[10px] font-semibold -mt-3 ${

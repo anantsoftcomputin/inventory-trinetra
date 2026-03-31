@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ShoppingCart, Bell, Menu } from 'lucide-react';
 import { getLowStockProducts } from '../../firebase/inventoryService';
+import Logo from '../common/Logo';
 
 const PAGE_TITLES = {
   '/dashboard': 'Dashboard',
@@ -45,7 +46,7 @@ export default function Header({ onMenuClick }) {
         >
           <Menu className="w-5 h-5 text-gray-600" />
         </button>
-        <img src="/logo.png" alt="Trinetra" className="w-7 h-7 object-contain flex-shrink-0" />
+        <Logo className="w-7 h-7" imgClassName="w-7 h-7 object-contain flex-shrink-0" />
         <h1 className="text-xl font-bold text-indigo-950">{title}</h1>
       </div>
       <div className="flex items-center gap-3">

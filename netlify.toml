@@ -5,3 +5,8 @@
 [build.environment]
   SECRETS_SCAN_SMART_DETECTION_ENABLED = "false"
   NPM_FLAGS = "--legacy-peer-deps"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

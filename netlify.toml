@@ -4,3 +4,4 @@
 
 [build.environment]
   SECRETS_SCAN_SMART_DETECTION_ENABLED = "false"
+  NPM_FLAGS = "--legacy-peer-deps"

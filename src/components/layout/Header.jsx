@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ShoppingCart, Bell, Menu } from 'lucide-react';
+import { ShoppingCart, Bell, Menu, LogOut } from 'lucide-react';
 import { getLowStockProducts } from '../../firebase/inventoryService';
+import { logOut } from '../../firebase/authService';
 import Logo from '../common/Logo';
+import toast from 'react-hot-toast';
 
 const PAGE_TITLES = {
   '/dashboard': 'Dashboard',
@@ -19,6 +21,15 @@ export default function Header({ onMenuClick }) {
   const navigate = useNavigate();
   const [now, setNow] = useState(new Date());
   const [lowStockCount, setLowStockCount] = useState(0);
+
+  async function handleLogout() {
+    try {
+      await logOut();
+      navigate('/login');
+    } catch {
+      toast.error('Logout failed');
+    }
+  }
 
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 60000);
@@ -70,6 +81,13 @@ export default function Header({ onMenuClick }) {
         >
           <ShoppingCart className="w-4 h-4" />
           <span className="hidden sm:inline">New Sale</span>
+        </button>
+        <button
+          onClick={handleLogout}
+          title="Sign Out"
+          className="p-2 rounded-lg hover:bg-red-50 text-gray-500 hover:text-red-600 transition-colors"
+        >
+          <LogOut className="w-5 h-5" />
         </button>
       </div>
     </header>
